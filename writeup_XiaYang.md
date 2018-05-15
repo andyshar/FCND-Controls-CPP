@@ -229,10 +229,9 @@ Calculate the desired acceleration in the global frame based on desired lateral 
 #### Specifications
 - The controller should use the local NE position and velocity to generate a commanded local acceleration
 #### Details
-- Compute yaw delta between commanded and observed yaw values.
-- Ensure you always travel the smallest angle from observed yaw to commanded yaw.
-- Normalize the error using fmodf to account for angle wrap.
-- Compute yaw rate with the proportional yaw constant.
+- Contrain desired velocity.
+- Determine PD controller + feedforward.
+- Constrain desired acceleration.
 #### Code
 ```
 V3F QuadControl::LateralPositionControl(V3F posCmd, V3F velCmd, V3F pos, V3F vel, V3F accelCmdFF)
